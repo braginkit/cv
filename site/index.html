@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <p class="portrait-lock">Turn your phone upright.</p>
   <div class="wrap">
     <header>
       <div class="intro">
@@ -187,11 +186,14 @@
         i = (i + 1) % inputs.length;
         inputs[i].checked = true;
       }
+      function turned() {
+        return window.matchMedia("(orientation: landscape) and (max-height: 520px)").matches;
+      }
       function fit() {
         var intro = document.querySelector(".intro");
         var dock = document.querySelector(".dock");
         var frames = box.querySelector(".frames");
-        if (window.innerWidth <= 720) {
+        if (window.innerWidth <= 720 || turned()) {
           frames.style.width = "";
           frames.style.height = "";
           dock.style.gridTemplateColumns = "";

@@ -490,7 +490,7 @@ footer {
   font-size: 0.78rem;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 720px), (orientation: landscape) and (max-height: 520px) {
   body { font-size: 0.92rem; }
   .wrap { margin: 0; border-radius: 0; border-left: 0; border-right: 0; }
   header {
@@ -539,23 +539,20 @@ footer {
   .skill-row { grid-template-columns: 1fr; }
 }
 
-.portrait-lock { display: none; }
-
-@media (orientation: landscape) and (max-height: 520px) and (hover: none) and (pointer: coarse) {
-  .portrait-lock {
-    display: flex;
-    position: fixed;
-    z-index: 50;
-    inset: 0;
-    margin: 0;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    background: var(--bg);
-    color: var(--ink);
-    text-align: center;
-    font-size: 1.15rem;
-    line-height: 1.4;
+@media (orientation: landscape) and (max-height: 520px) {
+  .wrap {
+    width: 100vh;
+    width: 100dvh;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .wrap { display: none; }
+  .dock {
+    width: calc(100vh - 1.4rem);
+    width: calc(100dvh - 1.4rem);
+    max-width: calc(100vw - 1.4rem);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
 }
